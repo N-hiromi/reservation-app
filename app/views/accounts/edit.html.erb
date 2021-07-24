@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-column col-3 left-nav">
+    <a class="navbar-brand" href="/rentals/top"></a>
+      <ul class="navbar-nav flex-column">
+        <li class="nav-item">
+          <%=link_to "アカウント設定", account_path, class: "nav-link", visible: true %>
+        </li>
+        <li class="nav-item">
+          <%=link_to "ユーザー設定", user_path(@current_user.id), class: "nav-link", visible: false %>
+        </li>
+      </ul>
+</nav>
+<div class="main users-edit users-right col-9">
+  <div class="container col-6">
+    <div class="form-heading">アカウント編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/accounts/#{@current_user.id}/update", {multipart: true}) do %>
+          <p>メールアドレス</p>
+          <input name="email" type="email">
+          <p>パスワード</p>
+          <input name="password">
+          <p>パスワード確認</p>
+          <input name="password_confirm">
+          <input type="submit" value="保存">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

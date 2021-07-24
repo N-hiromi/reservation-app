@@ -1,0 +1,22 @@
+<h1>Reservations#new</h1>
+<p>Find me in app/views/reservations/confirm.html.erb</p>
+<h2>予約内容確認</h2>
+<p><%= @rental.price%>/日</p>
+<dl>
+	<dt>開始日</dt>
+	<dd><%= @reservations.reserve_date %></dd>
+	<dt>終了日</dt>
+	<dd><%= @reservations.name %></dd>
+	<dt>人数</dt>
+	<dd><%= @reservations.note %></dd>
+	<dt>合計金額</dt>
+	<!--dd><!--%= @reservations.num_people %></dd-->
+</dl>
+
+<%= form_with: @reservation, method: :post, url: reservations_back_path do |form| %>
+	<%= form.submit '入力画面に戻る' %>
+<% end %>
+
+<%= form_with: @reservation, method: :post, url: reservation_path do |form| %>
+	<%= form.submit '送信する' %>
+<% end %>

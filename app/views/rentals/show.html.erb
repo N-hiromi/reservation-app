@@ -1,0 +1,29 @@
+<div class="container">
+  <img class="room_icon" src="<%= "/images/room_images/#{@rental.room_image}" %>">
+  <h2><%= @current_user.user_image %></h2>
+  <h2><%= @rental.room %></h2>
+  <p><%= @rental.area%><%= @rental.address%></p>
+</div>
+<div class="container">
+  <p><%= @rental.price%>/日</p>
+  <div class="form">
+    <h2>ルーム情報登録</h2>
+      <%= form_with model: @reservation, local:true, method: :post, url: reservations_confirm_path do |f| %>
+        <div class"form-group">
+          <label>開始日</label>
+            <%= f.date_field:check_in, class: "form-control" %>
+        </div>
+        <div class"form-group">
+          <label>終了日</label>
+            <%= f.date_field:check_out, class: "form-control" %>
+        </div>
+        <div class"form-group">
+        <label>人数</label>
+          <%= f.text_field:num_people, class: "form-control" %>
+        </div>
+        <div class"form-group">
+          <%= f.submit "保存", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+  </div>
+</div>

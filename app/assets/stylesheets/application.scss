@@ -1,0 +1,104 @@
+@import "bootstrap";
+html{
+  height:100%;
+  width:100%;
+}
+td{
+  vertical-align: middle;
+}
+img{
+  object-fit: cover;
+}
+body{
+  height:100%;
+}
+
+//header
+.flex{
+  display:inline;
+}
+//footer
+footer p{
+  color:#FFF;
+}
+//rentals_top
+.haikei{
+  background-image:url("https://presite-potepancamp-rails-02.herokuapp.com/assets/img_cover_top.jpg");
+  background-size: cover;
+  height:650px;
+  position:relative;
+}
+.haikei .form_area{
+  background-color:#FFF;
+  position:absolute;
+  top:30%;
+  left:10%;
+  display:block;
+  margin:auto;
+}
+.haikei .form_area .container{
+  margin:5% auto;
+  
+}
+.top_message{
+  margin:auto;
+  padding-bottom:20px;
+  font-size:20px;
+}
+.haikei .form_area p{
+  margin:auto;
+}
+.form_width{
+  display:inline-block;
+  width: 100%;
+  
+}
+.osusume_area{
+  margin:10% auto;
+}
+.area_image_container{
+  position:relative
+}
+.area_image_container p{
+  position:absolute;
+  text-align:center;
+  z-index:1;
+  color:#FFF;
+  left:50%;
+  top:90%;
+  display:block;
+}
+.area_image_container .area_image{
+  height:100%;
+  width:100%;
+}
+ .search_result .row a{
+   display:block;
+ }
+ //left-nav
+ .left-nav{
+   float:left;
+   height:100%;
+   padding: 0 0 60% 0;
+ }
+//users, account
+.users-right{
+  float:right;
+}
+.users-right .container{
+  margin-top:30%;
+}
+.user_icon{
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
+ //clear
+ .clear{
+   clear: both;
+ }
+ //rentals_entry
+ .room_icon{
+   width: 100px;
+   height: 100px;
+ }

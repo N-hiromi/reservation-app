@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-column col-3 left-nav">
+    <a class="navbar-brand" href="/rentals/top"></a>
+      <ul class="navbar-nav flex-column">
+        <li class="nav-item">
+          <%=link_to "アカウント設定", account_path, class: "nav-link", visible: true %>
+        </li>
+        <li class="nav-item">
+          <%=link_to "ユーザー設定", user_path(@user.id), class: "nav-link", visible: false %>
+        </li>
+      </ul>
+</nav>
+<div class="main user-show  users-right col-9">
+  <div class="container col-6">
+    <div class="user">
+      <img class="user_icon" src="<%= "/images/user_images/#{@user.user_image}" %>">
+      <h2><%= @user.user_name %></h2>
+      <p><%= @user.intro %></p>
+        <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

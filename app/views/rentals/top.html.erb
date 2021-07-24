@@ -1,0 +1,40 @@
+<div class="haikei col-12">
+  <div class="container form_area col-4">
+    <div class="container ">
+      <div class="top_message">Subakoで居心地の良い部屋を探そう</div>
+        <div class="form">
+        <%= search_form_for @q, url: rentals_path do |f| %>
+          <div class="area_search mb-4">
+            <p class="mb-0">エリア</p>
+            <%= f.search_field :area_cont , class: "form_width", placeholder: "東京" %>
+          </div>
+          <%= f.submit "検索", class: "btn btn-primary btn-block d-grid gap-2 form_width "%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="osusume_area container mx-5">
+  <h3 class="my-2">おすすめエリア</h3>
+  <div class="container-fluid area-container">
+      <div class="row py-4">
+            <div class="col-sm-6 col-md-3 area_image_container">
+              <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_tokyo.jpg" alt="東京" class="img-thumbnail area_image">
+              <p>東京</p>
+            </div>
+            <div class="col-sm-6 col-md-3 area_image_container">
+              <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_osaka.jpg" alt="大阪" class="img-thumbnail area_image">
+              <p>大阪</p>
+            </div>
+            <div class="col-sm-6 col-md-3 area_image_container">
+              <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_kyoto.jpg" alt="京都" class="img-thumbnail area_image">
+              <p>京都</p>
+            </div>
+            <div class="col-sm-6 col-md-3 area_image_container">
+              <img src="https://presite-potepancamp-rails-02.herokuapp.com/assets/img_sapporo.jpg" alt="札幌" class="img-thumbnail area_image">
+              <p>札幌</p>
+            </div>
+        </div>
+    </div>
+</div>
+

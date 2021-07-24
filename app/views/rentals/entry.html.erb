@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 class="mt-4">登録一覧</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ルーム画像</th>
+        <th scope="col">ルーム名</th>
+        <th scope="col">ルーム紹介</th>
+        <th scope="col">料金</th>
+        <th scope="col">作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @rentals.each do |rental| %>
+          <td><img class="room_icon" src="<%= "/images/room_images/#{rental.room_image}" %>"></td>
+          <td><%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
+          <td><%= rental.description %></td>
+          <td><%= rental.price %></td>
+          <td><%= rental.created_at %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
+ 

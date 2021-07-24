@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>予約済ルーム一覧</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ルーム画像</th>
+        <th scope="col">ルーム名</th>
+        <th scope="col">ルーム紹介</th>
+        <th scope="col">合計料金</th>
+        <th scope="col">開始日</th>
+        <th scope="col">終了日</th>
+        <th scope="col">予約確定日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <% @reservations.each do |reservation| %>
+          <td><img class="room_icon" src="<%= "/images/room_images/#{reservation.rentals.room_image}" %>"></td>
+          <td><%= link_to( reservation.rentals.room, "/rentals/#{reservation.rentals.id}" ) %></td>
+          <td><%= reservation.rentals.description %></td>
+          <td><%= reservation.rentals.price %></td>
+          <td><%= reservation.rentals.created_at %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>

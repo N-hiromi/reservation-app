@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="form">
+    <h2>ルーム情報登録</h2>
+      <%= form_with model: @rental, local:true, method: :post do |f| %>
+        <div class"form-group">
+          <label>ルーム名</label>
+            <%= f.text_field:room, class: "form-control" %>
+        </div>
+        <div class"form-group">
+          <label>ルーム紹介文</label>
+            <%= f.text_field:description, class: "form-control" %>
+        </div>
+        <div class"form-group">
+        <label>料金</label>
+          <%= f.text_field:price, class: "form-control" %>
+        </div>
+        <div class"form-group">
+        <label>住所：都道府県</label>
+          <%= f.text_field:area, class: "form-control" %>
+        </div>
+        <div class"form-group">
+        <label>住所：市町村〜建物名まで</label>
+          <%= f.text_area:address, class: "form-control" %>
+        </div>
+        <div class"form-group">
+        <label>住所：お部屋画像</label>
+          <%= f.file_field:room_image, class: "form-control" %>
+        </div>
+        <div class"form-group">
+          <%= f.submit "保存", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+  </div>
+</div>
+
