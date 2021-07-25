@@ -5,11 +5,12 @@ class ReservationsController < ApplicationController
   end
 
   def confirm
+    byebug
     @user = @current_user
 		@reservation = @user.reservations.new(@attr)
 		session[:reservation] = @reservation
 		if @reservation.invalid?
-			render :index
+			render :confirm
 		end
 	end
 	
@@ -17,7 +18,7 @@ class ReservationsController < ApplicationController
     @user = @current_user
     @reservation = @user.reservations.new(session[:reservation])
 		session.delete(:reservation)
-		render :index
+		render :show
   end
   
   

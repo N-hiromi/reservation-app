@@ -11,7 +11,6 @@ class RentalsController < ApplicationController
   def show
     @rental = Rental.find_by(id: params[:id])
     session.delete(:reservation)
-    byebug
     @reservation = Reservation.new
   end
 	
