@@ -1,7 +1,7 @@
 <h1>Reservations#new</h1>
 <p>Find me in app/views/reservations/confirm.html.erb</p>
 <h2>予約内容確認</h2>
-<p><%= @rental.price %>/日</p>
+<p><%= @user.rentals.price %>/日</p>
 <dl>
 	<dt>開始日</dt>
 	<dd><%= @user.reservations.reserve_date %></dd>
