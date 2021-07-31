@@ -27,11 +27,13 @@ class RentalsController < ApplicationController
       price: params[:rental][:price],
       area: params[:rental][:area],
       address: params[:rental][:address],
-      room_image: params[:rental][:room_image]
+      room_image: params[:rental][:room_image],
+      owner_id: @current_user.id
       )
     @rental.room_image = "room_#{@rental.id}_#{@current_user.id}.jpg"
     image = params[:rental][:room_image]
-    File.binwrite("public/images/room_images/#{@rental.room_image}",image.read)
+    #File.binwrite("/images/room_images/#{@rental.room_image}",image.read)
+    File.binwrite("/home/ec2-user/environment/subako/public/images/#{@rental.room_image}", image.read)
     if @user.save!
       flash[:notice] = "お部屋を登録しました"
       redirect_to("/rentals/#{@user.id}/entry")
@@ -49,7 +51,6 @@ class RentalsController < ApplicationController
   def destroy
     @user = @current_user
     #@rental = @user.rentals.find_by(id: params[:id])
-    byebug
     if @user.rentals.find_by(id: params[:rental][:id]).destroy!
       flash[:notice] = "お部屋を削除しました"
       redirect_to("/rentals/#{@user.id}/entry")

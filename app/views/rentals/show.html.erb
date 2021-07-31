@@ -7,8 +7,8 @@
 <div class="container">
   <p><%= @rental.price%>/日</p>
   <div class="form">
-    <h2>ルーム情報登録</h2>
-      <%= form_with model: @reservation, local:true, method: :post, url: reservations_confirm_path do |f| %>
+    <h2>ルーム予約</h2>
+      <%= form_with model: @reservation, local:true, method: :post, url: rental_reservations_confirm_path(@rental) do |f| %>
         <div class"form-group">
           <label>開始日</label>
             <%= f.date_field:check_in, class: "form-control" %>

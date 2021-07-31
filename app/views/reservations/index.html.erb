@@ -15,12 +15,12 @@
     <tbody>
       <tr>
         <% if @reservations %>
-          <% @reservations.each do |reservation| %>
-            <td><img class="room_icon" src="<%= "/images/room_images/#{reservation.rentals.room_image}" %>"></td>
-            <td><%= link_to( reservation.rentals.room, "/rentals/#{reservation.rentals.id}" ) %></td>
-            <td><%= reservation.rentals.description %></td>
-            <td><%= reservation.rentals.price %></td>
-            <td><%= reservation.rentals.created_at %></td>
+          <% @reservations.rental.each do |reservation rental| %>
+            <td><img class="room_icon" src="<%= "/images/room_images/#{reservation.rental.room_image}" %>"></td>
+            <td><%= link_to( reservation.rental.room, "/rentals/#{reservation.rental.id}" ) %></td>
+            <td><%= reservation.rental.description %></td>
+            <td><%= reservation.rental.price %></td>
+            <td><%= reservation.rental.created_at %></td>
           <% end %>
         <% end %>
       </tr>
