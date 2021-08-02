@@ -1,7 +1,11 @@
 class ReservationsController < ApplicationController
+	require 'active_support'
+	require 'active_support/core_ext'
   def index
     @user = @current_user
     @rentals = @current_user.rentals.where.not(reservation_id: "")
+    @reservations = @current_user.reservations.all
+    @reservations.blank?
   end
 
   def confirm

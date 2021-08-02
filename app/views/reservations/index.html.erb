@@ -6,21 +6,23 @@
         <th scope="col">ルーム画像</th>
         <th scope="col">ルーム名</th>
         <th scope="col">ルーム紹介</th>
-        <th scope="col">合計料金</th>
+        <!--th scope="col">合計料金</th-->
         <th scope="col">開始日</th>
         <th scope="col">終了日</th>
         <th scope="col">予約確定日時</th>
       </tr>
     </thead>
     <tbody>
-        <% if @rentals %>
-          <% @rentals.each do |rental| %>
+        <% if @reservations && reservation %>
+          <% @rentals.zip(@reservations) do |rental, reservation| %>
           <tr>
             <td><img class="room_icon" src="<%= "/images/room_images/#{rental.room_image}" %>"></td>
             <td><%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
             <td><%= rental.description %></td>
-            <td><%= rental.price %></td>
-            <td><%= rental.created_at %></td>
+            <!--td><!--%= rental.price %></td-->
+            <td><%= reservation.check_in %></td>
+            <td><%= reservation.check_out %></td>
+            <td><%= reservation.created_at %></td>
           </tr>
           <% end %>
         <% end %>
