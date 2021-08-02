@@ -13,17 +13,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <% if @reservations %>
-          <% @reservations.rental.each do |reservation rental| %>
-            <td><img class="room_icon" src="<%= "/images/room_images/#{reservation.rental.room_image}" %>"></td>
-            <td><%= link_to( reservation.rental.room, "/rentals/#{reservation.rental.id}" ) %></td>
-            <td><%= reservation.rental.description %></td>
-            <td><%= reservation.rental.price %></td>
-            <td><%= reservation.rental.created_at %></td>
+        <% if @rentals %>
+          <% @rentals.each do |rental| %>
+          <tr>
+            <td><img class="room_icon" src="<%= "/images/room_images/#{rental.room_image}" %>"></td>
+            <td><%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
+            <td><%= rental.description %></td>
+            <td><%= rental.price %></td>
+            <td><%= rental.created_at %></td>
+          </tr>
           <% end %>
         <% end %>
-      </tr>
     </tbody>
   </table>
 </div>

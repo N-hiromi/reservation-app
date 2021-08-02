@@ -5,4 +5,5 @@ class Rental < ApplicationRecord
   validates :area, {presence: true}
   validates :price, {presence: true}
   validates :description, {presence: true}
+  #self.primary_key = "reservation_id"
 end

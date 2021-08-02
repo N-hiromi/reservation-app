@@ -1,11 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     @user = @current_user
-    @reservations = @user.reservations.all
-    byebug
-    if @reservations
-    	puts "test"
-    end
+    @rentals = @current_user.rentals.where.not(reservation_id: "")
   end
 
   def confirm
@@ -13,7 +9,8 @@ class ReservationsController < ApplicationController
 		@reservation = @user.reservations.new(
 			check_in: params[:reservation][:check_in],
 			check_out: params[:reservation][:check_out],
-			num_people: params[:reservation][:num_people]
+			num_people: params[:reservation][:num_people],
+			rental_id: params[:rental_id]
 			)
 		session[:reservation] = @reservation
 		if @reservation.invalid?
@@ -29,7 +26,10 @@ class ReservationsController < ApplicationController
   end
   
   def complete
-		Reservation.create!(session[:reservation])
+		@reservation = Reservation.create!(session[:reservation])
+		@rental = @current_user.rentals.find_by(id: params[:rental_id])
+		@rental.reservation_id = @reservation.id
+		@rental.save
 		session.delete(:reservation)
 		redirect_to reservations_path
 	end
