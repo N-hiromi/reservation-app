@@ -38,4 +38,9 @@ class ReservationsController < ApplicationController
 		redirect_to reservations_path
 	end
 	
+	def show
+		@reservation = Reservation.find_by(id: params[:id])
+		@rental = @current_user.rentals.find_by(id: params[:rental_id])
+		@reservation.total = @reservation.price * (@reservation.check_out - @reservation.check_in + 1)
+	end
 end

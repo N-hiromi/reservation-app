@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     post "reservations/confirm" => "reservations#confirm"
     post "reservations/back" 
     post "reservations/complete"
+    get "reservations/:id/show" => "reservations#show"
   end
   root "rentals#top"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

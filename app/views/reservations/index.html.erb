@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-        <% if @reservations && reservation %>
+        <!--% if @reservations %-->
           <% @rentals.zip(@reservations) do |rental, reservation| %>
           <tr>
             <td><img class="room_icon" src="<%= "/images/room_images/#{rental.room_image}" %>"></td>
@@ -25,7 +25,7 @@
             <td><%= reservation.created_at %></td>
           </tr>
           <% end %>
-        <% end %>
+        <!--% end %-->
     </tbody>
   </table>
 </div>
