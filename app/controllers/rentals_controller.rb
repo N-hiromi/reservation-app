@@ -30,18 +30,18 @@ class RentalsController < ApplicationController
       room_image: params[:rental][:room_image],
       owner_id: @current_user.id
       )
-    @rental.room_image = "room_#{@rental.id}_#{@current_user.id}.jpg"
-    image = params[:rental][:room_image]
-    #File.binwrite("/images/room_images/#{@rental.room_image}",image.read)
-    File.binwrite("/home/ec2-user/environment/subako/public/images/#{@rental.room_image}", image.read)
+      @rental.room_image = "room_#{@rental.id}_#{@current_user.id}.jpg"
+      image = params[:rental][:room_image]
+      File.binwrite("/home/ec2-user/environment/subako/public/images/room_images/#{@rental.room_image}", image.read)
     if @user.save!
-      flash[:notice] = "お部屋を登録しました"
-      redirect_to("/rentals/#{@user.id}/entry")
+        flash[:notice] = "お部屋を登録しました"
+        redirect_to("/rentals/#{@user.id}/entry")
     else
        flash[:notice] = "登録失敗"
       render("rentals/new")
     end
   end
+    
   
   def edit
     @user = @current_user

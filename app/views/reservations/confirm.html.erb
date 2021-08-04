@@ -1,14 +1,13 @@
 <h2>予約内容確認</h2>
-<!--p><!--%= @user.rentals.price %>/日</p-->
 <dl>
 	<dt>開始日</dt>
 	<dd><%= @reservation.check_in %></dd>
 	<dt>終了日</dt>
 	<dd><%= @reservation.check_out %></dd>
 	<dt>人数</dt>
-	<dd><%= @reservation.num_people %></dd>
+	<dd><%= @reservation.num_people %>人</dd>
 	<dt>合計金額</dt>
-	<!--dd><!--%= @reservations.num_people %></dd-->
+	<dd><%= @reservation.total %>円</dd>
 </dl>
 
 <%= form_with model: @reservation, method: :post, url: rental_reservations_back_path do |form| %>

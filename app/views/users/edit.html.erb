@@ -19,7 +19,6 @@
             <%= message %>
           </div>
         <% end %>
-        <img class="user_icon" src="<%= "/images/user_images/#{@user.user_image}" %>">
         <%= form_with model: @user, local:true, method: :patch do |f| %>
         <div class"form-group">
           <label>画像</label>

@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       email: params[:user][:email],
       password: params[:user][:password],
       password_confirm: params[:user][:password_confirm],
-      user_image: "1.jpg"
+      user_image: "default.jpg"
     )
     if params[:user][:password] == params[:user][:password_confirm] && @user.save!
       session[:user_id] = @user.id
@@ -38,11 +38,10 @@ class UsersController < ApplicationController
     #@current_user.intro = params[:intro]
     if params[:user][:user_image]
       @current_user.user_image = "#{@current_user.id}.jpg"
-      user_image = params[:user][:user_image]
-      File.binwrite("public/images/user_images/#{@current_user.user_image}", image.read)
+      image = params[:user][:user_image]
+      File.binwrite("/home/ec2-user/environment/subako/public/images/user_images/#{@current_user.user_image}", image.read)
     end
     if @user.save!
-      
       redirect_to("/users/#{@current_user.id}")
       flash[:notice] = "変更しました"
     else

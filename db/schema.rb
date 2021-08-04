@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_08_02_092719) do
 
-  create_table "keyids", force: :cascade do |t|
-    t.string "user_id"
-    t.string "owner_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "room_id"
-  end
-
   create_table "rentals", force: :cascade do |t|
     t.string "room"
     t.text "address"

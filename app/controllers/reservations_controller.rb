@@ -1,11 +1,11 @@
 class ReservationsController < ApplicationController
-	require 'active_support'
-	require 'active_support/core_ext'
+	#require 'active_support'
+	#require 'active_support/core_ext'
   def index
     @user = @current_user
     @rentals = @current_user.rentals.where.not(reservation_id: "")
     @reservations = @current_user.reservations.all
-    @reservations.blank?
+    #@reservations.blank?
   end
 
   def confirm
@@ -17,8 +17,11 @@ class ReservationsController < ApplicationController
 			rental_id: params[:rental_id]
 			)
 		session[:reservation] = @reservation
+		@rental = @current_user.rentals.find_by(id: params[:rental_id])
+		@reservation.total = @rental.price.to_i * ((@reservation.check_out - @reservation.check_in).to_i + 1)
 		if @reservation.invalid?
-			render :show
+			redirect_to "/rentals/#{params[:rental_id]}"
+			#render "rentals/#{params[:rental_id]}"
 		end
 	end
 	
@@ -26,7 +29,8 @@ class ReservationsController < ApplicationController
     @user = @current_user
     @reservation = @user.reservations.new(session[:reservation])
 		session.delete(:reservation)
-		render :show
+		redirect_to "/rentals/#{params[:rental_id]}"
+		
   end
   
   def complete
@@ -35,12 +39,12 @@ class ReservationsController < ApplicationController
 		@rental.reservation_id = @reservation.id
 		@rental.save
 		session.delete(:reservation)
-		redirect_to reservations_path
+		redirect_to "/rentals/#{params[:rental_id]}/reservations/#{@reservation.id}/show"
 	end
 	
 	def show
 		@reservation = Reservation.find_by(id: params[:id])
 		@rental = @current_user.rentals.find_by(id: params[:rental_id])
-		@reservation.total = @reservation.price * (@reservation.check_out - @reservation.check_in + 1)
+		@reservation.total = @rental.price.to_i * ((@reservation.check_out - @reservation.check_in).to_i + 1)
 	end
 end
