@@ -16,7 +16,7 @@
           <td><img class="room_icon" src="<%= "/images/room_images/#{rental.room_image}" %>"></td>
           <td><%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
           <td><%= rental.description %></td>
-          <td><%= rental.price %></td>
+          <td><%= rental.price %>円</td>
           <td><%= rental.created_at %></td>
         </tr>
         <% end %>

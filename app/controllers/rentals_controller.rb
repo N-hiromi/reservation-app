@@ -1,6 +1,7 @@
 class RentalsController < ApplicationController
   before_action :search
   before_action :set_current_user
+  
   def top
   end
 
@@ -15,13 +16,11 @@ class RentalsController < ApplicationController
   end
 	
   def new
-    @user = @current_user
-    @rental = @user.rentals.new
+    @rental = @current_user.rentals.new
   end
   
   def create
-    @user = @current_user
-    @rental = @user.rentals.new(
+    @rental = @current_user.rentals.new(
       room: params[:rental][:room],
       description: params[:rental][:description],
       price: params[:rental][:price],
@@ -30,10 +29,11 @@ class RentalsController < ApplicationController
       room_image: params[:rental][:room_image],
       owner_id: @current_user.id
       )
+    if @rental.save!
       @rental.room_image = "room_#{@rental.id}_#{@current_user.id}.jpg"
       image = params[:rental][:room_image]
       File.binwrite("/home/ec2-user/environment/subako/public/images/room_images/#{@rental.room_image}", image.read)
-    if @user.save!
+      @rental.save!
         flash[:notice] = "お部屋を登録しました"
         redirect_to("/rentals/#{@user.id}/entry")
     else
@@ -44,24 +44,20 @@ class RentalsController < ApplicationController
     
   
   def edit
-    @user = @current_user
-    @rental = @user.rentals.find_by(id: params[:user][:user_id])
+    @rental = @current_user.rentals.find_by(id: params[:user][:user_id])
   end
   
   def destroy
-    @user = @current_user
-    #@rental = @user.rentals.find_by(id: params[:id])
-    if @user.rentals.find_by(id: params[:rental][:id]).destroy!
+    if @current_user.rentals.find_by(id: params[:rental][:id]).destroy!
       flash[:notice] = "お部屋を削除しました"
-      redirect_to("/rentals/#{@user.id}/entry")
+      redirect_to("/rentals/#{@current_user.id}/entry")
     else
       flash[:notice] = "失敗"
-      redirect_to("/rentals/#{@user.id}/entry")
+      redirect_to("/rentals/#{@current_user.id}/entry")
     end
   end
   
   def entry
-    @user = @current_user
-    @rentals = @user.rentals.all
+    @rentals = @current_user.rentals.all
   end
 end

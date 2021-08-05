@@ -13,33 +13,17 @@
       </tr>
     </thead>
     <tbody>
-        <!--% if @reservations %-->
-          <!--% @rentals.zip(@reservations) do |rental, reservation| %>
+        <% @reservations.each do |reservation| %>
           <tr>
-            <td><img class="room_icon" src="<!--%= "/images/room_images/#{rental.room_image}" %>"></td>
-            <td><!%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
-            <td><!%= rental.description %></td>
-            <td><!%= reservation.total %>円</td>
-            <td><!%= reservation.check_in %></td>
-            <td><!%= reservation.check_out %></td>
-            <td><!%= reservation.created_at %></td>
-          </tr>
-          <!% end %>
-        <!--% end %-->
-        
-        <% @rentals.each do |rental| %>
-          <tr>
-            <td><img class="room_icon" src="<%= "/images/room_images/#{rental.room_image}" %>"></td>
-            <td><%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
-            <td><%= rental.description %></td>
-            <% @reservations.each do |reservation| %>
+            <td><img class="room_icon" src="<%= "/images/room_images/#{reservation.room_image}" %>"></td>
+            <td><%= link_to( reservation.room, "/rentals/#{reservation.rental_id}" ) %></td>
+            <td><%= reservation.description %></td>
             <td><%= reservation.total %>円</td>
             <td><%= reservation.check_in %></td>
             <td><%= reservation.check_out %></td>
             <td><%= reservation.created_at %></td>
           </tr>
-          <% end %>
-          <% end %>
+        <% end %>
     </tbody>
   </table>
 </div>

@@ -19,7 +19,7 @@
             <%= message %>
           </div>
         <% end %>
-        <%= form_with model: @user, local:true, method: :patch do |f| %>
+        <%= form_with model: @current_user, local:true, method: :patch do |f| %>
         <div class"form-group">
           <label>画像</label>
               <%= f.file_field:user_image, class: "form-control" %>
