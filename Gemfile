@@ -69,3 +69,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 5.0.1'
 gem "ransack"
 gem 'jquery-rails'
+gem 'aws-sdk-s3'
