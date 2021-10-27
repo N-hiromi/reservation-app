@@ -1,0 +1,26 @@
+<%= render "layouts/refactoring/user_nav" %>
+<div class="main user-show  users-right col-9">
+  <div class="container col-10 ">
+    <div class="container d-flex mt-5 justify-content-between ">
+      <div class= "show_image col-8 h-50">
+        <%= image_tag @user.image%>
+      </div>
+      <div class="description_container">
+        <% if @user.user_name.nil? %>
+          <h2 class="mt-5">名前未設定</h2>
+          <% else %>
+          <h2 class="mt-5">名前： <%= @user.user_name %></h2>
+          <% end %>
+        <% if @user.intro.nil? %>
+          <p class="mt-5">自己紹介未設定</p>
+          <% else %>
+          <p class="mt-5">自己紹介： <%= @user.intro %></p>
+          <% end %>
+          <p class="mt-5">e-mail： <%= @user.email%></p>
+          <%= link_to "編集", "/users/#{@user.id}/edit", class: "btn btn-primary float-end mt-3" %>
+          <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

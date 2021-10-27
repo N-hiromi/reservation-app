@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 class="mt-4">登録一覧</h2>
+  <table class="table table-striped<%= ' no_data_table' if @rentals.blank? %>" >
+    <thead>
+      <tr>
+        <th scope="col">ルーム画像</th>
+        <th scope="col">ルーム名</th>
+        <th scope="col">ルーム紹介</th>
+        <th scope="col">料金</th>
+        <th scope="col">作成日</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @rentals.each do |rental| %>
+        <tr>
+          <td class="index_image"><%= render "/layouts/refactoring/no_image", anything: rental %></td>
+          <td><%= link_to( rental.room, "/rentals/#{rental.id}" ) %></td>
+          <td><%= rental.description %></td>
+          <td><%= rental.price %>円</td>
+          <td><%= rental.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+ 

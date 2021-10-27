@@ -1,0 +1,27 @@
+<div class="container">
+ <div class="col-md-4 offseet-md-4">
+    <h2 class="text-center">新規作成</h2>
+      <%= form_with url: {controller: "accounts", action: "create"}, local:true do |f| %>
+        <div class="form-group">
+            <label>名前</label>
+            <%= f.text_field:user_name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+            <label>メールアドレス</label>
+            <%= f.email_field:email, class: "form-control" %>
+        </div>
+        <div class="form-group">              
+          <label>パスワード</label>
+          <%= f.password_field:password, class: "form-control" %>
+        </div>
+          <div class="form-group">              
+            <label>確認用パスワード</label>
+            <%= f.password_field:password_confirm, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "登録", class: "btn btn-primary float-end mt-3" %>
+            <div class="clear"></div>
+          </div>
+      <% end %>
+    </div>    
+</div> 

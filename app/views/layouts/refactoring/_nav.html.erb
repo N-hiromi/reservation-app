@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/rentals/top">Travel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+      <div class="form-group row">
+      <%= search_form_for @q, url: rentals_path do |f| %>
+        <%= f.search_field :area_cont , class: "form-control me-2", placeholder: "都道府県で検索" , class: "form-inline"%>
+        <%= f.search_field :area_or_address_cont , class: "form-control me-2 nav-link", placeholder: "キーワード検索" , class: "form-inline"%>
+        <%= f.submit "検索", class: "btn btn-outline-success" , class: "form-inline"%>
+      <% end %>
+    </div>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown nav_menu">
+          <a class="nav-link dropdown-toggle ms-3" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">メニュー</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%=link_to "ルーム登録", new_rental_path, class: "dropdown-item"%></li>
+            <li><%=link_to "予約済一覧", reservations_path, class: "dropdown-item"%></li>
+            <li><%= link_to "登録済", "/rentals/#{@current_user.id}/entry", class: "dropdown-item" %></li>
+            <li><%=link_to "プロフィール", user_path(@current_user.id), class: "dropdown-item"%></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%=link_to "ログアウト", logout_path, method: :post, class: "dropdown-item" %></li>
+          </ul>
+        </li>
+        <% if @current_user %>
+          <li class="nav-item ms-3">
+            <%=link_to user_path(@current_user.id), class: "nav-link" do %>
+              <div class="icon_image d-inline-block">
+                <%= image_tag @current_user.image%>
+              </div>
+              <%= @current_user.user_name %>
+            <% end %>
+          </li>
+        <% else %>
+          <li class="nav-item ms-3">
+            <%= link_to "ログイン", "/login", class: "btn btn-primary" %>
+          </li>
+          <li class="nav-item ms-3">
+            <%= link_to "新規登録", new_account_path, class: "btn btn-info" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

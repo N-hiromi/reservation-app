@@ -1,0 +1,29 @@
+<div class="container">
+  <h2>予約済ルーム一覧</h2>
+  <table class="table table-striped<%= ' no_data_table' if @reservations.blank? %>" >
+    <thead>
+      <tr>
+        <th scope="col">ルーム画像</th>
+        <th scope="col">ルーム名</th>
+        <th scope="col">ルーム紹介</th>
+        <th scope="col">合計料金</th>
+        <th scope="col">開始日</th>
+        <th scope="col">終了日</th>
+        <th scope="col">予約確定日時</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td class="index_image"><%= render "/layouts/refactoring/no_image", anything: reservation %></td>
+            <td><%= link_to Rental.find(reservation.rental_id).room, reservation_path(id: reservation.rental_id) %></td>
+            <td><%= Rental.find(reservation.rental_id).description %></td>
+            <td><%= reservation.total %>円</td>
+            <td><%= reservation.check_in %></td>
+            <td><%= reservation.check_out %></td>
+            <td><%= reservation.created_at %></td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

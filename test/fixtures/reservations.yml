@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  check_in: 2021-07-16
+  check_out: 2021-07-16
+  num_date: 1
+  num_people: 1
+  price: 1
+  total: 1
+
+two:
+  user_name: MyString
+  check_in: 2021-07-16
+  check_out: 2021-07-16
+  num_date: 1
+  num_people: 1
+  price: 1
+  total: 1

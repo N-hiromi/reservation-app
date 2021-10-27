@@ -1,0 +1,42 @@
+<%= render "layouts/refactoring/user_nav" %>
+<div class="main users-edit users-right col-9">
+  <div class="container col-10 ">
+    <div class="form-heading mb-3">ユーザ情報編集</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% @user.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
+        <%= form_with url: {controller: "users", action: "update"}, local:true, method: :patch do |f| %>
+        <div class="form-group">
+          <label>画像</label>
+              <%= f.file_field:image, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <label>ユーザ名</label>
+             <%= f.text_field:user_name, class: "form-control", value: @user.user_name %>
+        </div>
+          <label>自己紹介</label>
+             <%= f.text_area:intro, class: "form-control", value: @user.intro %>
+        </div>
+        <div class="form-group">
+          <label>メールアドレス</label>
+             <%= f.email_field:email, class: "form-control", value: @user.email %>
+        </div>
+        <div class="form-group">
+          <label>パスワード</label>
+             <%= f.password_field:password, class: "form-control", value: @user.password %>
+        </div>
+          <div class="form-group">
+            <%= f.submit "保存", class: "btn btn-primary float-end mt-3" %>
+            <div class="clear"></div>
+          </div>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
